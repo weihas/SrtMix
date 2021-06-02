@@ -7,7 +7,7 @@ When I watched the video on the iPad yesterday, I found that the player (**Infus
 ### How to Use
 
 + You can click the “**Download**” link above to download 
-+ Double click the MixSrt.dmg
++ Double click the SrtMix.dmg
     - I don't think users need to convert subtitles every day, so this program does not need to be installed to avoid subsequent uninstalling.
     - You only need to load to run.
 + When you open the app, it has only one interface, which is very concise :
@@ -18,6 +18,6 @@ When I watched the video on the iPad yesterday, I found that the player (**Infus
 
 
 ### Uninstall and delete
-When you complete the transformation, you just need to close the window and push the MixSrt.Dmg out to stop loading, which will not contain any residues.
+When you complete the transformation, you just need to close the window and push the SrtMix.Dmg out to stop loading, which will not contain any residues.
 
 ### Please send an email for more questions : weihas@icloud.com
