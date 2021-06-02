@@ -1,5 +1,5 @@
-# SrtMix [(Download)](https://github.com/weihas/SrtMix/releases/download/v1.0/SrtMix.dmg) 
-### v1.0 (Both on AppleSilicon and Intel Mac)
+# SrtMix [(Download)](https://github.com/weihas/SrtMix/releases/download/v1.1/SrtMix.dmg) 
+### v1.1 (Both on AppleSilicon and Intel Mac)
 #### Copyright © 2021 Weiha wang  All rights reserved.
 
 When I watched the video on the iPad yesterday, I found that the player (**Infuse**) can only play one of the Chinese or English subtitles. This makes me feel a little uncomfortable. I prefer Chinese, but some words can only be expressed well in English, so I hope to display both Chinese and English. So it took me three hours to finish this app. It's very simple, just fusion subtitles, and there are no other redundant functions.
