@@ -21,55 +21,77 @@ class Mix: ObservableObject {
     
     
     func Mix() {
-        let chaString = String(data: Chinese, encoding: String.Encoding.utf8)
         let engString = String(data: English, encoding: String.Encoding.utf8)
+        let chaString = String(data: Chinese, encoding: String.Encoding.utf8)
+
         
-        self.C_E_Srt = match(strC: chaString ?? "", strE: engString ?? "")
+        self.C_E_Srt = deal(en: engString ?? "", ch: chaString ?? "")
         showSavePanel()
         
     }
     
     
 
-    
-    
-    func match(strC: String,strE: String) -> String {
-        var result: String = ""
+    func deal(en: String, ch: String) -> String{
+        var result = ""
         
-        let CStr = strC.split(separator: "\n")
-        let EStr = strE.split(separator: "\n")
-        var flag:Bool = true
+        let engs = en.split(separator: "\n")
+        let chas = ch.split(separator: "\n")
         
         var point = 0
         
-        for i in 0..<EStr.count {
-            progress = Double(i)/Double(EStr.count)
-            if  i < EStr.count-1 && point < CStr.count-1 && flag && EStr[i+1] == CStr[point+1] {
-                result += "\n"
-            }
+        
+        for index in 0..<engs.count{
+            let Sen = String(engs[index])
             
-            result += EStr[i]+"\n"
-            
-            if EStr[i] == CStr[point] {
-                flag = false
-            }
-            if flag {
-                continue
-            }
-            if EStr[i] == CStr[point] {
-                point+=1
-            }else{
-                result += CStr[point]+"\n"
-                point+=1
-                flag = true
-            }
-            
-            if point==CStr.count {
+            switch kind(of: Sen) {
+            case 0:
+                result += Sen+"\n"
+                point += 1
+                break
+            case 1:
+                result += Sen+"\n"
+                point += 1
+                break
+            case 2:
+                result += Sen+"\n"
+                if index+1 < engs.count && kind(of: String(engs[index+1])) != 2 {
+                    if point<chas.count {
+                        while kind(of: String(chas[point])) != 0 && kind(of: String(chas[point])) != 1 {
+                            result += chas[point]+"\n"
+                            point+=1
+                        }
+                        result += "\n"
+                    }
+                }else if index+1 == engs.count {
+                    if point<chas.count {
+                        result += chas[point]
+                    }
+                }
+                break
+            default:
                 break
             }
             
+            
         }
+        
+        print(result)
         return result
+    }
+
+
+
+    func kind(of str: String)-> Int{
+        let patterns: [String] = ["^[0-9]*$", "^[0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]{3} --> [0-9]{2}:[0-9]{2}:[0-9]{2},[0-9]{3}+$", "^[^\u{4e00}-\u{9fa5}]+$"]
+        
+        for (index,pattern) in patterns.enumerated() {
+            let pre = NSPredicate(format: "SELF MATCHES %@", pattern)
+            if pre.evaluate(with: str) {
+                return index
+            }
+        }
+        return -1
     }
     
     func showChoosePanel(isTheFirstFile: Bool) {
